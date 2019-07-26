@@ -17,7 +17,7 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 	</insert>
 	
 	<update id="update" parameterType="restaurant">
-		UPDATE RT SET RT_NAME=#{rt_name},ADDR=#{addr},CATE_NUM=#{cate_num},LAT=#{lat},LON=#{lon},tel=#{tel} WHERE RT_ID=#{rt_id}
+		UPDATE RT SET RT_NAME=#{rt_name},ADDR=#{addr},CATE_NUM=#{cate_num},LAT=#{lat},LON=#{lon},TEL=#{tel} WHERE RT_ID=#{rt_id}
 	</update>
 	
 	<delete id="delete" parameterType="Integer">
