@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.mapper.ReplyMapper">
+	
+	<!--  
+	<resultMap type="user" id="um">
+		<result property="id" column="id"/>	
+		<result property="pwd" column="pwd"/>	
+		<result property="name" column="name"/>	
+	</resultMap>
+-->
+
+	<insert id="insert" parameterType="reply">
+		INSERT INTO B_REPLY VALUES (R_SEQ.NEXTVAL,#{at_id},#{r_cont},'id01',SYSDATE)
+	</insert>
+	
+	<update id="update" parameterType="reply">
+		UPDATE B_REPLY SET R_CONT=#{r_cont},R_DATE=SYSTIMESTAMP WHERE R_ID=#{r_id}
+	</update>
+	
+	<delete id="delete" parameterType="Integer">
+		DELETE FROM B_REPLY WHERE R_ID=#{obj}
+	</delete>
+	
+	<select id="select" parameterType="Integer" resultType="reply">
+		SELECT * FROM B_REPLY WHERE R_ID=#{obj}
+	</select>
+	
+	<select id="selectall" resultType="reply">
+		SELECT * FROM B_REPLY
+	</select>
+	
+	<select id="selectByOwnerId" parameterType="Integer" resultType="reply">
+		SELECT * FROM B_REPLY WHERE AT_ID=#{obj}
+	</select>
+	
+	<delete id="deleteByOwnerId" parameterType="Integer">
+		DELETE FROM B_REPLY WHERE AT_ID=#{obj}
+	</delete>
+	
+</mapper>
+
+
+
+

@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.mapper.RestaurantMapper">
+	
+	<!--  
+	<resultMap type="user" id="um">
+		<result property="id" column="id"/>	
+		<result property="pwd" column="pwd"/>	
+		<result property="name" column="name"/>	
+	</resultMap>
+-->
+
+	<insert id="insert" parameterType="restaurant">
+		INSERT INTO RT VALUES (RT_SEQ.NEXTVAL,#{rt_name},#{addr},#{cate_num},#{lat},#{lon},#{tel})
+	</insert>
+	
+	<update id="update" parameterType="restaurant">
+		UPDATE RT SET RT_NAME=#{rt_name},ADDR=#{addr},CATE_NUM=#{cate_num},LAT=#{lat},LON=#{lon},tel=#{tel} WHERE RT_ID=#{rt_id}
+	</update>
+	
+	<delete id="delete" parameterType="Integer">
+		DELETE FROM RT WHERE RT_ID=#{obj}
+	</delete>
+	
+	<select id="select" parameterType="Integer" resultType="restaurant">
+		SELECT * FROM RT WHERE RT_ID=#{obj}
+	</select>
+	
+	<select id="selectall" resultType="restaurant">
+		SELECT * FROM RT
+	</select>
+	
+</mapper>
+
+
+
+

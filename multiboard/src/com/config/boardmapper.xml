@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.mapper.BoardMapper">
+	
+	<!--  
+	<resultMap type="user" id="um">
+		<result property="id" column="id"/>	
+		<result property="pwd" column="pwd"/>	
+		<result property="name" column="name"/>	
+	</resultMap>
+-->
+
+	<insert id="insert" parameterType="board">
+		<selectKey keyProperty="at_id" resultType="int" order="BEFORE">
+		  SELECT B_SEQ.NEXTVAL FROM DUAL 
+		</selectKey>
+		INSERT INTO B_BOARD VALUES (#{at_id}, #{u_id}, #{at_title}, #{at_detail}, #{at_hits},#{b_type},SYSDATE,100)
+	</insert>
+	
+	<update id="update" parameterType="board">
+		UPDATE B_BOARD SET AT_TITLE=#{at_title},AT_DETAIL=#{at_detail},AT_DATE=SYSDATE,RT_ID=#{rt_id} WHERE AT_ID=#{at_id}
+	</update>
+	
+	<delete id="delete" parameterType="Integer">
+		DELETE FROM B_BOARD WHERE AT_ID=#{obj}
+	</delete>
+	
+	<select id="select" parameterType="Integer" resultType="board">
+		SELECT * FROM B_BOARD WHERE AT_ID=#{obj}
+	</select>
+
+	<select id="selectall" resultType="board">
+		SELECT * FROM B_BOARD
+	</select>
+	
+	<select id="selectByOwnerId" parameterType="String" resultType="board">
+		SELECT * FROM B_BOARD WHERE U_ID=#{obj}
+	</select>
+	
+	<delete id="deleteByOwnerId" parameterType="Integer">
+		DELETE FROM B_BOARD WHERE U_ID=#{obj}
+	</delete>
+	
+	
+</mapper>
+
+
+
+

@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.mapper.CategoryMapper">
+
+	<!-- <resultMap type="user" id="um"> <result property="id" column="id"/> 
+		<result property="pwd" column="pwd"/> <result property="name" column="name"/> 
+		</resultMap> -->
+
+	<insert id="insert" parameterType="category">
+		INSERT INTO RT_CATE VALUES
+		(#{cate_num},#{cate_det})
+	</insert>
+
+	<update id="update" parameterType="category">
+		UPDATE RT_CATE SET
+		CATE_DET=#{cate_det} WHERE CATE_NUM=#{id}
+	</update>
+
+	<delete id="delete" parameterType="Integer">
+		DELETE FROM RT_CATE WHERE
+		CATE_NUM=#{obj}
+	</delete>
+
+	<select id="select" parameterType="Integer"
+		resultType="category">
+		SELECT * FROM RT_CATE WHERE CATE_NUM=#{obj}
+	</select>
+
+	<select id="selectall" resultType="category">
+		SELECT * FROM RT_CATE
+	</select>
+
+
+	<insert id="insertCheckCateNum" parameterType="category">
+		MERGE INTO
+		RT_CATE
+		USING DUAL
+		ON (CATE_NUM = #{cate_num})
+		WHEN NOT MATCHED THEN
+		INSERT(CATE_NUM, CATE_DET) VALUES (#{cate_num},#{cate_det});
+	</insert>
+
+</mapper>
+
+
+
+
