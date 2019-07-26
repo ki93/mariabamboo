@@ -13,14 +13,11 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 -->
 
 	<insert id="insert" parameterType="board">
-		<selectKey keyProperty="at_id" resultType="int" order="BEFORE">
-		  SELECT B_SEQ.NEXTVAL FROM DUAL 
-		</selectKey>
-		INSERT INTO B_BOARD VALUES (#{at_id}, #{u_id}, #{at_title}, #{at_detail}, #{at_hits},#{b_type},SYSDATE,100)
+		INSERT INTO B_BOARD(U_ID, AT_TITLE, AT_DETAIL, AT_HITS, B_TYPE, AT_DATE, RT_ID) VALUES (#{u_id}, #{at_title}, #{at_detail}, #{at_hits},#{b_type},SYSDATE(),100)
 	</insert>
 	
 	<update id="update" parameterType="board">
-		UPDATE B_BOARD SET AT_TITLE=#{at_title},AT_DETAIL=#{at_detail},AT_DATE=SYSDATE,RT_ID=#{rt_id} WHERE AT_ID=#{at_id}
+		UPDATE B_BOARD SET AT_TITLE=#{at_title},AT_DETAIL=#{at_detail},AT_DATE=SYSDATE(),RT_ID=#{rt_id} WHERE AT_ID=#{at_id}
 	</update>
 	
 	<delete id="delete" parameterType="Integer">

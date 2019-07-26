@@ -13,11 +13,11 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 -->
 
 	<insert id="insert" parameterType="reply">
-		INSERT INTO B_REPLY VALUES (R_SEQ.NEXTVAL,#{at_id},#{r_cont},'id01',SYSDATE)
+		INSERT INTO B_REPLY(AT_ID, R_CONT, U_ID, R_DATE) VALUES (#{at_id},#{r_cont},'id01',SYSDATE())
 	</insert>
 	
 	<update id="update" parameterType="reply">
-		UPDATE B_REPLY SET R_CONT=#{r_cont},R_DATE=SYSTIMESTAMP WHERE R_ID=#{r_id}
+		UPDATE B_REPLY SET R_CONT=#{r_cont},R_DATE=SYSDATE() WHERE R_ID=#{r_id}
 	</update>
 	
 	<delete id="delete" parameterType="Integer">

@@ -13,11 +13,11 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 -->
 
 	<insert id="insert" parameterType="restaurant">
-		INSERT INTO RT VALUES (RT_SEQ.NEXTVAL,#{rt_name},#{addr},#{cate_num},#{lat},#{lon},#{tel})
+		INSERT INTO RT(RT_NAME, ADDR, CATE_NUM, LAT, LON, TEL) VALUES (#{rt_name},#{addr},#{cate_num},#{lat},#{lon},#{tel})
 	</insert>
 	
 	<update id="update" parameterType="restaurant">
-		UPDATE RT SET RT_NAME=#{rt_name},ADDR=#{addr},CATE_NUM=#{cate_num},LAT=#{lat},LON=#{lon},tel=#{tel} WHERE RT_ID=#{rt_id}
+		UPDATE RT SET RT_NAME=#{rt_name},ADDR=#{addr},CATE_NUM=#{cate_num},LAT=#{lat},LON=#{lon},TEL=#{tel} WHERE RT_ID=#{rt_id}
 	</update>
 	
 	<delete id="delete" parameterType="Integer">
