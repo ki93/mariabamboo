@@ -13,7 +13,7 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 -->
 
 	<insert id="insert" parameterType="bfile">
-		INSERT INTO B_FILE VALUES (F_SEQ.NEXTVAL, #{f_name}, #{at_id})
+		INSERT INTO B_FILE(F_NAME, AT_ID) VALUES (#{f_name}, #{at_id})
 	</insert>
 	
 	<update id="update" parameterType="bfile">
